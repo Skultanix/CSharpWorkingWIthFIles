@@ -1,9 +1,13 @@
-﻿namespace WorkingWithFiles
+﻿using System;
+
+namespace WorkingWithFiles
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            //Note that for local testing on your machine, you will need to adjust the path string
+
             var path = @"C:\Users\cajar\Desktop\UdemyProjects\CSharpFundamentals\WorkingWithFiles\Tomorrow&tommorow&tomorrow.txt";
             var allChars = File.ReadAllText(path);
             var words = new List<string>(allChars.Split(new char[] { },StringSplitOptions.RemoveEmptyEntries));
@@ -12,10 +16,6 @@
             {
                 Console.WriteLine(string.Format("The number of words in the text file is {0} words.", words.Count()));
                 
-                foreach(var word in words)
-                {
-                    Console.WriteLine(word);
-                }
             }
             void ExerciseTwo()
             {
@@ -37,7 +37,33 @@
             }
             //calling Exercises
             //ExerciseOne();
-            ExerciseTwo();
+            //ExerciseTwo();
+
+            Console.WriteLine("Hello, which exercise would you like to test out (1 or 2)?");
+            var input = Console.ReadLine();
+
+            if(string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Error.");
+                return;
+            }
+
+            try
+            {
+            if(int.Parse(input) == 1)
+                {
+                    ExerciseOne();
+                }
+            if(int.Parse(input) == 2)
+                {
+                    ExerciseTwo();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error.");
+                return;
+            }
         }
     }
 }
