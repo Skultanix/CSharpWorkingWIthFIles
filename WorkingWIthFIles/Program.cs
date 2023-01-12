@@ -19,10 +19,25 @@
             }
             void ExerciseTwo()
             {
-
+                if (words.Count > 0)
+                {
+                    var longestIndex = 1;
+                    var longestWord = words[0];
+                    for(var i = 1; i < words.Count; i++)
+                    {
+                        var item = words[i];
+                        if(item.Length > longestWord.Length)
+                        {
+                            longestWord = item;
+                            longestIndex = i + 1;
+                        }
+                    }
+                    Console.WriteLine(string.Format("The longest word in the text file is '{0}'.\nIt is word number {1} in the document.", longestWord, longestIndex));
+                }
             }
             //calling Exercises
-            ExerciseOne();
+            //ExerciseOne();
+            ExerciseTwo();
         }
     }
 }
